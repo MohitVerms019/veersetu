@@ -1,0 +1,314 @@
+/* =============================================================
+   VEER SETU — responsive.css
+   Mobile-first responsive overrides
+   ============================================================= */
+
+/* =============================================================
+   BASE (mobile-first defaults already in style.css / auth.css)
+   The breakpoints below override for progressively larger screens
+   ============================================================= */
+
+/* ── 480px and below ─────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  /* Typography scale down */
+  h1 { font-size: 1.9rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.2rem; }
+
+  .section-title { font-size: 1.5rem; }
+  .section-desc  { font-size: 0.88rem; }
+
+  /* Hero (if .hero-heading / .hero-cta exist) */
+  .hero-heading   { font-size: 1.8rem !important; }
+  .hero-subheading{ font-size: 0.9rem !important; }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.875rem;
+  }
+
+  /* Buttons smaller */
+  .btn      { padding: 0.55rem 1.1rem; font-size: 0.85rem; }
+  .btn-lg   { padding: 0.7rem 1.4rem;  font-size: 0.95rem; }
+
+  /* Nav compacted */
+  .nav-brand__tagline { display: none; }
+
+  /* Container tighter */
+  .container { padding-inline: 1rem; }
+
+  /* Stat cards full-width */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  /* Cards */
+  .card-body { padding: 1rem; }
+
+  /* Toast narrower */
+  #vs-toast-container {
+    right: 0.75rem;
+    left: 0.75rem;
+    max-width: none;
+    width: auto;
+  }
+}
+
+/* ── 767px and below ─────────────────────────────────────────── */
+@media (max-width: 767px) {
+
+  /* Top bar: hidden */
+  .top-bar { display: none; }
+
+  /* Nav: show mobile toggle, hide desktop menu + auth buttons */
+  .mobile-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    display: none; /* overridden by drawer styles below */
+  }
+
+  .nav-actions .btn-nav-login,
+  .nav-actions .btn-nav-register {
+    display: none;
+  }
+
+  /* Section spacing tighter */
+  .section-header { margin-bottom: 1.5rem; }
+
+  /* Any 2-col or 3-col grids collapse to 1 col */
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Feature grid → 1 col */
+  .features-grid,
+  .benefits-grid,
+  .services-grid,
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Footer: 2-column then 1 on very small */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .footer-col-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-about { max-width: 100%; }
+
+  .footer-bottom .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  /* Auth container → single col (also handled in auth.css) */
+  .auth-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Modals wider */
+  .terms-modal-overlay {
+    padding: 1rem;
+  }
+
+  .terms-modal-dialog {
+    max-height: 90vh;
+  }
+
+  /* Section padding */
+  section { padding-block: 3rem; }
+}
+
+/* ── 991px and below — MOBILE NAV DRAWER ────────────────────── */
+@media (max-width: 991px) {
+
+  /* Show toggle */
+  .mobile-toggle {
+    display: flex;
+  }
+
+  /* Nav menu becomes full-width drawer sliding down from navbar */
+  .nav-menu {
+    position: fixed;
+    top: var(--nav-h, 74px);
+    left: 0;
+    right: 0;
+    background: #526B60;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.75rem 1.25rem 1.25rem;
+    box-shadow: 0 8px 24px rgba(48,60,54,0.22);
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.22,1,0.36,1),
+                opacity 0.3s ease;
+    z-index: 999;
+    border-top: 1px solid rgba(241,238,230,0.12);
+    display: flex; /* always flex, controlled by transform */
+  }
+
+  .nav-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-link {
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid rgba(241,238,230,0.1);
+    border-radius: 0;
+    font-size: 0.95rem;
+    justify-content: flex-start;
+  }
+
+  .nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  .nav-link.active {
+    color: #DE7928;
+  }
+
+  /* Mobile auth buttons inside drawer */
+  .nav-menu-mobile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(241,238,230,0.15);
+  }
+
+  .nav-menu-mobile-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Hamburger → X animation when open */
+  .mobile-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .mobile-toggle.open span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+  }
+
+  .mobile-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Nav active pill not relevant on mobile */
+  .nav-active-pill { display: none; }
+
+  /* 2-col grids reduce to 2 (from 3–4) */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .features-grid,
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Auth: hide brand feature list, shrink padding */
+  .auth-brand-col {
+    padding: 2.5rem;
+  }
+
+  .auth-form-col {
+    padding: 2.5rem;
+    max-height: none;
+  }
+}
+
+/* ── 1024px and below ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  /* Nav gap reduced */
+  .nav-menu { gap: 0; }
+  .nav-link { padding: 0.4rem 0.55rem; font-size: 0.85rem; }
+
+  /* Nav brand tagline hidden */
+  .nav-brand__tagline { display: none; }
+
+  /* 4-col grids → 2-col */
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+
+  /* Services / features 3-col → 2-col */
+  .features-grid,
+  .services-grid,
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Auth container narrower */
+  .auth-container {
+    max-width: 90%;
+  }
+
+  /* Container tighter */
+  .container { padding-inline: 1.25rem; }
+
+  /* Section padding reduced */
+  section { padding-block: 4rem; }
+}
+
+/* ── Utility overrides that apply at multiple breakpoints ────── */
+
+/* Ensure images in responsive context don't overflow */
+img { max-width: 100%; height: auto; }
+
+/* Stack flex rows on small */
+@media (max-width: 600px) {
+  .flex-wrap-sm {
+    flex-wrap: wrap;
+  }
+
+  .flex-col-sm {
+    flex-direction: column;
+  }
+}
+
+/* Print: hide nav, top bar, footer, overlays */
+@media print {
+  .top-bar,
+  .main-nav,
+  .main-footer,
+  .vs-overlay,
+  #vs-toast-container,
+  .mobile-toggle {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+}

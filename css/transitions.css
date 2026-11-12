@@ -1,0 +1,415 @@
+/* ==========================================================================
+   VEER SETU 🇮🇳 - CINEMATIC PAGE TRANSITIONS STYLESHEET
+   Classic Palette:
+   Sage Green: #829B8F | Forest Grey: #526B60 | Warm Ivory: #F1EEE6
+   Warm Beige: #B9AA98 | Soft Sand: #D5C9BA  | Deep Charcoal: #303C36
+   Subtle Accents: Saffron #DE7928 | Green #316847
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. GLOBAL TRANSITION OVERLAY CONTAINER
+-------------------------------------------------------------------------- */
+.vs-page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  overflow: hidden;
+  transition: visibility 0.4s ease, opacity 0.4s ease;
+}
+
+.vs-page-transition-overlay.active {
+  pointer-events: all;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   2. ANIMATION 1 & 2: CURTAIN PANELS (Split left & right)
+-------------------------------------------------------------------------- */
+.vs-curtain-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.5%;
+  height: 100%;
+  background-color: var(--forest-grey, #526B60);
+  transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+
+.vs-curtain-left {
+  left: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(135deg, #526B60 0%, #3d5248 100%);
+  border-right: 1px solid rgba(185, 170, 152, 0.3);
+}
+
+.vs-curtain-right {
+  right: 0;
+  transform: translateX(100%);
+  background: linear-gradient(225deg, #526B60 0%, #303C36 100%);
+  border-left: 1px solid rgba(185, 170, 152, 0.3);
+}
+
+/* Curtain Closing (Page Exit) */
+.vs-page-transition-overlay.transition-curtain.closing .vs-curtain-left {
+  transform: translateX(0%);
+}
+.vs-page-transition-overlay.transition-curtain.closing .vs-curtain-right {
+  transform: translateX(0%);
+}
+
+/* Curtain Opening (Page Entrance) */
+.vs-page-transition-overlay.transition-curtain.opening .vs-curtain-left {
+  transform: translateX(-100%);
+}
+.vs-page-transition-overlay.transition-curtain.opening .vs-curtain-right {
+  transform: translateX(100%);
+}
+
+/* --------------------------------------------------------------------------
+   3. ANIMATION 3: FULL SAGE REVEAL WITH GEOMETRIC WIPE
+-------------------------------------------------------------------------- */
+.vs-reveal-wipe {
+  position: absolute;
+  inset: 0;
+  background-color: var(--sage-green, #829B8F);
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  transition: clip-path 0.65s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: clip-path;
+}
+
+.vs-reveal-wipe-accent {
+  position: absolute;
+  inset: 0;
+  background-color: var(--forest-grey, #526B60);
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  transition: clip-path 0.55s cubic-bezier(0.65, 0, 0.35, 1) 0.08s;
+  will-change: clip-path;
+}
+
+/* Geometric floating polygons in Sage overlay */
+.vs-geometric-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.vs-page-transition-overlay.active .vs-geometric-shapes {
+  opacity: 0.25;
+}
+
+.vs-geo-polygon {
+  position: absolute;
+  border: 2px solid var(--warm-ivory, #F1EEE6);
+  border-radius: 4px;
+  animation: geoFloat 8s infinite linear;
+}
+
+.vs-geo-1 {
+  width: 140px;
+  height: 140px;
+  top: 15%;
+  left: 10%;
+  transform: rotate(45deg);
+  border-color: var(--warm-beige, #B9AA98);
+}
+
+.vs-geo-2 {
+  width: 220px;
+  height: 220px;
+  bottom: 12%;
+  right: 8%;
+  transform: rotate(25deg);
+  border-color: var(--warm-ivory, #F1EEE6);
+}
+
+.vs-geo-3 {
+  width: 90px;
+  height: 90px;
+  top: 60%;
+  left: 20%;
+  transform: rotate(60deg);
+  border-color: var(--saffron-subtle, #DE7928);
+}
+
+@keyframes geoFloat {
+  0% { transform: rotate(0deg) translateY(0); }
+  50% { transform: rotate(180deg) translateY(-20px); }
+  100% { transform: rotate(360deg) translateY(0); }
+}
+
+.vs-page-transition-overlay.transition-reveal.closing .vs-reveal-wipe {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.vs-page-transition-overlay.transition-reveal.closing .vs-reveal-wipe-accent {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.vs-page-transition-overlay.transition-reveal.opening .vs-reveal-wipe {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+.vs-page-transition-overlay.transition-reveal.opening .vs-reveal-wipe-accent {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+
+/* --------------------------------------------------------------------------
+   4. ANIMATION 4: MILITARY-INSPIRED TRANSITION (Tricolor + Shield)
+-------------------------------------------------------------------------- */
+.vs-military-sweep {
+  position: absolute;
+  inset: 0;
+  background-color: var(--deep-charcoal, #303C36);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.vs-page-transition-overlay.transition-military.closing .vs-military-sweep {
+  opacity: 1;
+}
+
+/* Subtle Tricolor Beam Traveling Across Screen */
+.vs-tricolor-beam {
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #DE7928 25%,
+    #F1EEE6 50%,
+    #316847 75%,
+    transparent 100%
+  );
+  box-shadow: 0 0 18px rgba(222, 121, 40, 0.6);
+  transform: translateY(-50%);
+  transition: left 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: left;
+}
+
+.vs-page-transition-overlay.closing .vs-tricolor-beam {
+  left: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   5. CENTERPIECE: VEER SETU EMBLEM & MOTTO
+-------------------------------------------------------------------------- */
+.vs-transition-centerpiece {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, opacity;
+  text-align: center;
+}
+
+.vs-page-transition-overlay.closing .vs-transition-centerpiece {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition-delay: 0.15s;
+}
+
+.vs-page-transition-overlay.opening .vs-transition-centerpiece {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.1);
+  transition: opacity 0.3s ease, transform 0.35s ease;
+}
+
+.vs-transition-emblem-wrap {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--warm-ivory, #F1EEE6);
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  border: 2px solid var(--warm-beige, #B9AA98);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: emblemPulse 2s infinite ease-in-out;
+}
+
+@keyframes emblemPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); }
+  50% { transform: scale(1.05); box-shadow: 0 14px 40px rgba(222, 121, 40, 0.3); }
+}
+
+.vs-transition-emblem-wrap svg {
+  width: 100%;
+  height: 100%;
+}
+
+.vs-transition-wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.vs-wordmark-title {
+  font-family: 'Cinzel', 'Cormorant Garamond', serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--warm-ivory, #F1EEE6);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.vs-wordmark-title span {
+  color: #DE7928;
+}
+
+.vs-wordmark-tagline {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--soft-sand, #D5C9BA);
+  font-weight: 600;
+}
+
+.vs-wordmark-motto {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #DE7928;
+  letter-spacing: 1px;
+  margin-top: 0.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. PAGE ENTRANCE ANIMATIONS (Staggered Reveals for New Page Content)
+-------------------------------------------------------------------------- */
+@keyframes vsFadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vsFadeZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes vsRevealLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Classes to apply staggered entrances */
+.vs-animate-entry {
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.vs-entry-fade-up {
+  animation-name: vsFadeSlideUp;
+}
+
+.vs-entry-zoom {
+  animation-name: vsFadeZoom;
+}
+
+.vs-entry-left {
+  animation-name: vsRevealLeft;
+}
+
+/* Stagger delay utility classes */
+.vs-delay-1 { animation-delay: 0.08s; }
+.vs-delay-2 { animation-delay: 0.16s; }
+.vs-delay-3 { animation-delay: 0.24s; }
+.vs-delay-4 { animation-delay: 0.32s; }
+.vs-delay-5 { animation-delay: 0.40s; }
+.vs-delay-6 { animation-delay: 0.48s; }
+
+/* --------------------------------------------------------------------------
+   7. VIEW TRANSITIONS API INTEGRATION (For Chrome/Edge supporting @view-transition)
+-------------------------------------------------------------------------- */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: 0.45s cubic-bezier(0.4, 0, 1, 1) both vsViewOut;
+}
+
+::view-transition-new(root) {
+  animation: 0.55s cubic-bezier(0, 0, 0.2, 1) both vsViewIn;
+}
+
+@keyframes vsViewOut {
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+@keyframes vsViewIn {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. ACCESSIBILITY: PREFERS REDUCED MOTION
+-------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .vs-page-transition-overlay,
+  .vs-curtain-panel,
+  .vs-reveal-wipe,
+  .vs-reveal-wipe-accent,
+  .vs-military-sweep,
+  .vs-tricolor-beam,
+  .vs-transition-centerpiece,
+  .vs-geo-polygon {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .vs-page-transition-overlay.active {
+    display: none !important;
+  }
+  
+  .vs-animate-entry {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+

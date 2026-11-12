@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#526B60">
+  <title>Register | VEER SETU 🇮🇳 — Defence Welfare Portal</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/transitions.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="auth-body">
+
+  <!-- NAVBAR -->
+  <header class="main-nav auth-nav" id="main-navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand" data-transition="curtain">
+        <svg class="brand-emblem-svg" viewBox="0 0 100 100" fill="none" width="40" height="40">
+          <polygon points="50,4 94,22 94,74 50,96 6,74 6,22" fill="#303C36" stroke="#B9AA98" stroke-width="4"/>
+          <path d="M28,32 L72,68 M72,32 L28,68" stroke="#F1EEE6" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="14" fill="#829B8F" stroke="#F1EEE6" stroke-width="2"/>
+          <polygon points="50,42 53,48 59,48 54,52 56,58 50,54 44,58 46,52 41,48 47,48" fill="#F1EEE6"/>
+        </svg>
+        <div class="brand-text">
+          <span class="brand-name">VEER <span class="setu">SETU</span></span>
+          <span class="brand-tagline">DIGITAL WELFARE BRIDGE • वीर सेतु</span>
+        </div>
+      </a>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link" data-transition="curtain">Home</a>
+        <a href="about.html" class="nav-link" data-transition="curtain">About Us</a>
+        <a href="login.html" class="nav-link" data-transition="wipe">Login</a>
+        <a href="register.html" class="nav-link active" data-transition="wipe">Register</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="index.html" class="btn-nav-login" data-transition="curtain"><i class="fa-solid fa-arrow-left"></i> Main Portal</a>
+        <button class="mobile-toggle" id="mobile-menu-toggle"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="auth-main">
+    <div class="auth-container vs-anim zoom-in">
+
+      <!-- LEFT BRANDING COLUMN -->
+      <div class="auth-brand-col">
+        <!-- Logo Block -->
+        <div class="auth-logo-block">
+          <svg class="brand-emblem-svg" viewBox="0 0 100 100" fill="none" width="60" height="60">
+            <polygon points="50,4 94,22 94,74 50,96 6,74 6,22" fill="#303C36" stroke="#B9AA98" stroke-width="4"/>
+            <path d="M28,32 L72,68 M72,32 L28,68" stroke="#F1EEE6" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="50" cy="50" r="14" fill="#526B60" stroke="#F1EEE6" stroke-width="2"/>
+            <polygon points="50,42 53,48 59,48 54,52 56,58 50,54 44,58 46,52 41,48 47,48" fill="#F1EEE6"/>
+          </svg>
+          <div class="brand-text">
+            <span class="brand-name">VEER <span class="setu">SETU</span></span>
+            <span class="brand-tagline">DIGITAL WELFARE BRIDGE • वीर सेतु</span>
+          </div>
+        </div>
+
+        <h1 class="auth-heading">Join the Welfare Bridge</h1>
+        <p class="auth-subheading">Create an official welfare profile to access central defense scholarships, ECHS medical aid, pension guidance and Veer Nari support in one unified platform.</p>
+
+        <ul class="auth-feature-list">
+          <li><i class="fa-solid fa-id-card-clip"></i> Personalized Welfare Pass Generation</li>
+          <li><i class="fa-solid fa-shield-halved"></i> Role-Based Secure Authentication</li>
+          <li><i class="fa-solid fa-bell"></i> Scheme Deadline Notifications</li>
+          <li><i class="fa-solid fa-file-shield"></i> Secure Document Submission</li>
+          <li><i class="fa-solid fa-headset"></i> 24h Support Helpdesk Access</li>
+        </ul>
+
+        <div class="auth-quote-block">
+          <blockquote>
+            <i class="fa-solid fa-quote-left quote-icon"></i>
+            <p>"Every serving soldier, veteran, and Veer Nari deserves frictionless access to their rightful welfare. Register to begin."</p>
+            <footer class="quote-byline">— Veer Setu Mission Statement</footer>
+          </blockquote>
+        </div>
+
+        <!-- Tricolor Strip -->
+        <div class="auth-tricolor-strip">
+          <span class="tricolor-saffron"></span>
+          <span class="tricolor-white"></span>
+          <span class="tricolor-green"></span>
+        </div>
+      </div><!-- /auth-brand-col -->
+
+      <!-- RIGHT FORM COLUMN -->
+      <div class="auth-form-col">
+        <div class="form-header">
+          <h2 class="auth-form-heading">Create Your Account</h2>
+          <p class="auth-form-sub">Complete registration to unlock full welfare portal access.</p>
+        </div>
+
+        <!-- User Category Selector -->
+        <div class="user-cat-selector" role="group" aria-label="Select your service category">
+          <button type="button" class="user-cat-btn active" data-category="serving">
+            <i class="fa-solid fa-shield-halved"></i> Serving Personnel
+          </button>
+          <button type="button" class="user-cat-btn" data-category="veteran">
+            <i class="fa-solid fa-medal"></i> Veteran / ESM
+          </button>
+          <button type="button" class="user-cat-btn" data-category="family">
+            <i class="fa-solid fa-people-roof"></i> Family Member
+          </button>
+        </div>
+        <input type="hidden" id="user-category" name="user_category" value="serving">
+
+        <!-- Register Form -->
+        <form id="register-form" novalidate>
+          <div id="reg-banner" class="form-banner hidden"></div>
+
+          <!-- Full Name -->
+          <div class="form-group">
+            <label class="form-label" for="reg-fullname">
+              <i class="fa-solid fa-user"></i> Full Name
+            </label>
+            <div class="input-wrapper">
+              <i class="input-icon fa-solid fa-id-card"></i>
+              <input
+                type="text"
+                id="reg-fullname"
+                name="full_name"
+                class="form-input"
+                placeholder="Your full name as per service records"
+                required
+              >
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="reg-email">
+              <i class="fa-solid fa-envelope"></i> Email Address
+            </label>
+            <div class="input-wrapper">
+              <i class="input-icon fa-solid fa-at"></i>
+              <input
+                type="email"
+                id="reg-email"
+                name="email"
+                class="form-input"
+                placeholder="Active email address"
+                required
+                autocomplete="email"
+              >
+            </div>
+          </div>
+
+          <!-- Mobile Number -->
+          <div class="form-group">
+            <label class="form-label" for="reg-mobile">
+              <i class="fa-solid fa-mobile-screen"></i> Mobile Number
+            </label>
+            <div class="input-wrapper">
+              <i class="input-icon fa-solid fa-phone"></i>
+              <input
+                type="tel"
+                id="reg-mobile"
+                name="mobile"
+                class="form-input"
+                placeholder="10-digit Indian mobile number"
+                maxlength="10"
+                pattern="[6-9][0-9]{9}"
+                required
+              >
+            </div>
+          </div>
+
+          <!-- Two-column password row -->
+          <div class="form-row-two-col">
+            <div class="form-group">
+              <label class="form-label" for="reg-password">
+                <i class="fa-solid fa-lock"></i> Create Password
+              </label>
+              <div class="input-wrapper">
+                <i class="input-icon fa-solid fa-key"></i>
+                <input
+                  type="password"
+                  id="reg-password"
+                  name="password"
+                  class="form-input"
+                  placeholder="Min 8 characters"
+                  required
+                >
+                <button type="button" class="show-pass-btn" id="show-reg-pass" aria-label="Show password">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-confirm">
+                <i class="fa-solid fa-lock-open"></i> Confirm Password
+              </label>
+              <div class="input-wrapper">
+                <i class="input-icon fa-solid fa-check-to-slot"></i>
+                <input
+                  type="password"
+                  id="reg-confirm"
+                  name="confirm_password"
+                  class="form-input"
+                  placeholder="Repeat password"
+                  required
+                >
+                <button type="button" class="show-pass-btn" id="show-confirm-pass" aria-label="Show password">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Password Strength Meter -->
+          <div class="strength-meter">
+            <div class="strength-bar-track">
+              <div class="strength-bar-fill" id="strength-fill"></div>
+            </div>
+            <span class="strength-label" id="strength-label">Enter a password</span>
+          </div>
+
+          <!-- Terms -->
+          <div class="form-group">
+            <label class="checkbox-row">
+              <input type="checkbox" id="terms-checkbox" name="terms_accepted" required>
+              <span>I agree to the <a href="#" id="terms-link" class="terms-toggle-link">Terms and Conditions</a> and Privacy Policy of Veer Setu.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-auth-submit">
+            <i class="fa-solid fa-user-plus"></i> Create Account
+          </button>
+        </form>
+
+        <p class="auth-switch-link">
+          Already have an account?
+          <a href="login.html" data-transition="wipe">Login Here</a>
+        </p>
+
+        <p class="auth-disclaimer">
+          <i class="fa-solid fa-circle-info"></i>
+          This is an academic prototype for demonstration purposes only. Not an official Ministry of Defence portal.
+        </p>
+      </div><!-- /auth-form-col -->
+
+    </div><!-- /auth-container -->
+  </main>
+
+  <!-- TERMS MODAL -->
+  <div class="modal-overlay hidden" id="terms-modal" role="dialog" aria-modal="true" aria-label="Terms and Conditions">
+    <div class="modal-dialog modal-dialog-tall">
+      <button class="modal-close-x" id="close-terms-modal" aria-label="Close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <h3>Terms and Conditions</h3>
+      <div class="terms-body">
+        <h4>1. Academic Demonstration</h4>
+        <p>Veer Setu is an academic prototype demonstrating a welfare platform architecture. It does not represent an official Ministry of Defence portal.</p>
+        <h4>2. Data Privacy</h4>
+        <p>Your information is processed securely and never shared with third parties. Passwords are hashed using Argon2id. Personal data complies with the Digital Personal Data Protection (DPDP) Act 2023.</p>
+        <h4>3. Eligibility Verification</h4>
+        <p>Army identity verification is conducted by authorized administrators only. Fake credentials are grounds for account termination.</p>
+        <h4>4. Welfare Information</h4>
+        <p>Scheme information links directly to authentic government portals (ksb.gov.in, echs.gov.in, sparsh.defencepension.gov.in). We do not mediate applications.</p>
+        <h4>5. Security</h4>
+        <p>Accounts are protected with rate-limiting, session management, and multi-factor authentication support.</p>
+      </div>
+      <button type="button" class="btn-auth-submit" id="accept-terms-btn">
+        <i class="fa-solid fa-check"></i> I Accept These Terms
+      </button>
+    </div>
+  </div>
+
+  <!-- Transition overlay (injected by transitions.js) -->
+  <div class="vs-overlay" id="vs-overlay" aria-hidden="true">
+    <div class="vs-curtain-left"></div>
+    <div class="vs-curtain-right"></div>
+    <div class="vs-wipe-layer"></div>
+    <div class="vs-wipe-accent"></div>
+    <div class="vs-mil-sweep"></div>
+    <div class="vs-tricolor-beam"></div>
+    <div class="vs-emblem-center">
+      <svg viewBox="0 0 100 100" fill="none" width="64" height="64">
+        <polygon points="50,4 94,22 94,74 50,96 6,74 6,22" fill="#303C36" stroke="#B9AA98" stroke-width="4"/>
+        <path d="M28,32 L72,68 M72,32 L28,68" stroke="#F1EEE6" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="50" cy="50" r="14" fill="#829B8F" stroke="#F1EEE6" stroke-width="2"/>
+        <polygon points="50,42 53,48 59,48 54,52 56,58 50,54 44,58 46,52 41,48 47,48" fill="#F1EEE6"/>
+      </svg>
+      <span class="vs-wordmark">VEER SETU</span>
+    </div>
+  </div>
+
+  <script src="js/navigation.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

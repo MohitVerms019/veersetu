@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#526B60">
+  <title>Login | VEER SETU 🇮🇳 — Defence Welfare Portal</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/transitions.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="auth-body">
+
+  <!-- NAVBAR -->
+  <header class="main-nav auth-nav" id="main-navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand" data-transition="curtain">
+        <svg class="brand-emblem-svg" viewBox="0 0 100 100" fill="none" width="40" height="40">
+          <polygon points="50,4 94,22 94,74 50,96 6,74 6,22" fill="#303C36" stroke="#B9AA98" stroke-width="4"/>
+          <path d="M28,32 L72,68 M72,32 L28,68" stroke="#F1EEE6" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="14" fill="#829B8F" stroke="#F1EEE6" stroke-width="2"/>
+          <polygon points="50,42 53,48 59,48 54,52 56,58 50,54 44,58 46,52 41,48 47,48" fill="#F1EEE6"/>
+        </svg>
+        <div class="brand-text">
+          <span class="brand-name">VEER <span class="setu">SETU</span></span>
+          <span class="brand-tagline">DIGITAL WELFARE BRIDGE • वीर सेतु</span>
+        </div>
+      </a>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link" data-transition="curtain">Home</a>
+        <a href="about.html" class="nav-link" data-transition="curtain">About Us</a>
+        <a href="login.html" class="nav-link active" data-transition="wipe">Login</a>
+        <a href="register.html" class="nav-link" data-transition="wipe">Register</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="index.html" class="btn-nav-login" data-transition="curtain"><i class="fa-solid fa-arrow-left"></i> Main Portal</a>
+        <button class="mobile-toggle" id="mobile-menu-toggle"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="auth-main">
+    <div class="auth-container vs-anim zoom-in">
+
+      <!-- LEFT BRANDING COLUMN -->
+      <div class="auth-brand-col">
+        <!-- Logo Block -->
+        <div class="auth-logo-block">
+          <svg class="brand-emblem-svg" viewBox="0 0 100 100" fill="none" width="60" height="60">
+            <polygon points="50,4 94,22 94,74 50,96 6,74 6,22" fill="#303C36" stroke="#B9AA98" stroke-width="4"/>
+            <path d="M28,32 L72,68 M72,32 L28,68" stroke="#F1EEE6" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="50" cy="50" r="14" fill="#526B60" stroke="#F1EEE6" stroke-width="2"/>
+            <polygon points="50,42 53,48 59,48 54,52 56,58 50,54 44,58 46,52 41,48 47,48" fill="#F1EEE6"/>
+          </svg>
+          <div class="brand-text">
+            <span class="brand-name">VEER <span class="setu">SETU</span></span>
+            <span class="brand-tagline">DIGITAL WELFARE BRIDGE • वीर सेतु</span>
+          </div>
+        </div>
+
+        <h1 class="auth-heading">Welcome to Veer Setu</h1>
+        <p class="auth-subheading">A Digital Bridge of Support for Our Brave Soldiers and Their Families.</p>
+
+        <ul class="auth-feature-list">
+          <li><i class="fa-solid fa-graduation-cap"></i> PMSS Scholarships &amp; Higher Education</li>
+          <li><i class="fa-solid fa-heart-pulse"></i> ECHS Cashless Healthcare Network</li>
+          <li><i class="fa-solid fa-hand-holding-dollar"></i> AGIF &amp; SPARSH Pension Management</li>
+          <li><i class="fa-solid fa-people-roof"></i> Veer Nari &amp; Family Welfare Support</li>
+          <li><i class="fa-solid fa-house-shield"></i> AWHO Housing &amp; CSD Canteen Benefits</li>
+        </ul>
+
+        <div class="auth-quote-block">
+          <blockquote>
+            <i class="fa-solid fa-quote-left quote-icon"></i>
+            <p>"Honouring Those Who Serve. Supporting Those Who Stand Behind Them."</p>
+            <footer class="quote-byline">— Indian Armed Forces Welfare Doctrine 🇮🇳</footer>
+          </blockquote>
+        </div>
+
+        <!-- Tricolor Strip -->
+        <div class="auth-tricolor-strip">
+          <span class="tricolor-saffron"></span>
+          <span class="tricolor-white"></span>
+          <span class="tricolor-green"></span>
+        </div>
+      </div><!-- /auth-brand-col -->
+
+      <!-- RIGHT FORM COLUMN -->
+      <div class="auth-form-col">
+        <div class="form-header">
+          <h2 class="auth-form-heading">Welcome Back!</h2>
+          <p class="auth-form-sub">Login to access your welfare services and entitlements.</p>
+        </div>
+
+        <!-- User Category Selector -->
+        <div class="user-cat-selector" role="group" aria-label="Select your service category">
+          <button type="button" class="user-cat-btn active" data-category="serving">
+            <i class="fa-solid fa-shield-halved"></i> Serving Personnel
+          </button>
+          <button type="button" class="user-cat-btn" data-category="veteran">
+            <i class="fa-solid fa-medal"></i> Veteran / ESM
+          </button>
+          <button type="button" class="user-cat-btn" data-category="family">
+            <i class="fa-solid fa-people-roof"></i> Family Member
+          </button>
+        </div>
+        <input type="hidden" id="user-category" name="user_category" value="serving">
+
+        <!-- Login Form -->
+        <form id="login-form" novalidate>
+          <div id="form-banner" class="form-banner hidden"></div>
+
+          <div class="form-group">
+            <label class="form-label" for="login-username">
+              <i class="fa-solid fa-user"></i> Username / Email Address
+            </label>
+            <div class="input-wrapper">
+              <i class="input-icon fa-solid fa-envelope"></i>
+              <input
+                type="text"
+                id="login-username"
+                name="username"
+                class="form-input"
+                placeholder="Enter your username or email"
+                required
+                autocomplete="username"
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="login-password">
+              <i class="fa-solid fa-lock"></i> Password
+            </label>
+            <div class="input-wrapper">
+              <i class="input-icon fa-solid fa-key"></i>
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                class="form-input"
+                placeholder="Enter your password"
+                required
+                autocomplete="current-password"
+              >
+              <button type="button" class="show-pass-btn" id="show-login-pass" aria-label="Show or hide password">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-row-inline">
+            <label class="checkbox-row">
+              <input type="checkbox" id="remember-me" name="remember_me">
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="forgot-link" id="forgot-pass-link">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="btn-auth-submit">
+            <i class="fa-solid fa-right-to-bracket"></i> Login to Portal
+          </button>
+        </form>
+
+        <p class="auth-switch-link">
+          Don't have an account?
+          <a href="register.html" data-transition="wipe">Create Account</a>
+        </p>
+
+        <p class="auth-disclaimer">
+          <i class="fa-solid fa-circle-info"></i>
+          This is an academic prototype for demonstration purposes only. Not an official Ministry of Defence portal.
+        </p>
+      </div><!-- /auth-form-col -->
+
+    </div><!-- /auth-container -->
+  </main>
+
+  <!-- FORGOT PASSWORD MODAL -->
+  <div class="modal-overlay hidden" id="forgot-modal" role="dialog" aria-modal="true" aria-label="Forgot Password">
+    <div class="modal-dialog">
+      <button class="modal-close-x" id="close-forgot-modal" aria-label="Close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-icon"><i class="fa-solid fa-key fa-2x"></i></div>
+      <h3>Reset Your Password</h3>
+      <p>Enter the email address linked to your Veer Setu account. We will send a time-limited reset link.</p>
+      <form id="forgot-form" novalidate>
+        <div id="forgot-banner" class="form-banner hidden"></div>
+        <div class="form-group">
+          <label class="form-label" for="forgot-email">Email Address</label>
+          <div class="input-wrapper">
+            <i class="input-icon fa-solid fa-envelope"></i>
+            <input
+              type="email"
+              id="forgot-email"
+              class="form-input"
+              placeholder="Your registered email"
+              required
+            >
+          </div>
+        </div>
+        <button type="submit" class="btn-auth-submit">
+          <i class="fa-solid fa-paper-plane"></i> Send Reset Link
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Transition overlay (injected by transitions.js) -->
+  <div class="vs-overlay" id="vs-overlay" aria-hidden="true">
+    <div class="vs-curtain-left"></div>
+    <div class="vs-curtain-right"></div>
+    <div class="vs-wipe-layer"></div>
+    <div class="vs-wipe-accent"></div>
+    <div class="vs-mil-sweep"></div>
+    <div class="vs-tricolor-beam"></div>
+    <div class="vs-emblem-center">
+      <svg viewBox="0 0 100 100" fill="none" width="64" height="64">
+        <polygon points="50,4 94,22 94,74 50,96 6,74 6,22" fill="#303C36" stroke="#B9AA98" stroke-width="4"/>
+        <path d="M28,32 L72,68 M72,32 L28,68" stroke="#F1EEE6" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="50" cy="50" r="14" fill="#829B8F" stroke="#F1EEE6" stroke-width="2"/>
+        <polygon points="50,42 53,48 59,48 54,52 56,58 50,54 44,58 46,52 41,48 47,48" fill="#F1EEE6"/>
+      </svg>
+      <span class="vs-wordmark">VEER SETU</span>
+    </div>
+  </div>
+
+  <script src="js/navigation.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

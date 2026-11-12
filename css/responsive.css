@@ -1,0 +1,188 @@
+/* ==========================================================================
+   VEER SETU 🇮🇳 - RESPONSIVE STYLESHEET
+   Mobile (320px - 767px), Tablet (768px - 1024px), Desktop (1025px+)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TABLETS & SMALL DESKTOPS (<= 1024px)
+-------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .nav-menu {
+    gap: 0.9rem;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .objectives-grid,
+  .deadlines-grid,
+  .hospital-cards-grid,
+  .contact-directory-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-dual-card-grid,
+  .family-feature-row,
+  .healthcare-hero-grid {
+    gap: 1.75rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. MOBILE & TABLET PORTRAIT (<= 991px)
+-------------------------------------------------------------------------- */
+@media (max-width: 991px) {
+  /* Navigation Bar Drawer */
+  .mobile-toggle {
+    display: flex !important;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--forest-grey, #526B60);
+    border-bottom: 2px solid var(--warm-beige, #B9AA98);
+    flex-direction: column;
+    padding: 1.5rem 2rem;
+    gap: 1rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    transform: translateY(-110%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.35s ease,
+                visibility 0.35s ease;
+    z-index: 1000;
+  }
+
+  .nav-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-link {
+    font-size: 1.05rem;
+    color: var(--warm-ivory, #F1EEE6);
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(241, 238, 230, 0.1);
+    width: 100%;
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  .nav-active-pill {
+    display: none !important;
+  }
+
+  .nav-actions {
+    gap: 0.5rem;
+  }
+
+  .btn-nav-login,
+  .btn-nav-register {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  /* Two Column Grids Stacking */
+  .about-dual-card-grid,
+  .family-feature-row,
+  .healthcare-hero-grid,
+  .hero-grid,
+  .contact-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .vs-page-title {
+    font-size: 2.3rem;
+  }
+
+  .edu-spotlight-card {
+    padding: 2rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. MOBILE PHONES (<= 767px)
+-------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .top-bar {
+    display: none;
+  }
+
+  .vs-page-header {
+    padding: 3.5rem 0 2.5rem;
+  }
+
+  .vs-page-title {
+    font-size: 2rem;
+  }
+
+  .vs-page-lead {
+    font-size: 0.98rem;
+  }
+
+  .objectives-grid,
+  .deadlines-grid,
+  .hospital-cards-grid,
+  .contact-directory-grid,
+  .schemes-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .filter-search-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-tabs-row {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+  }
+
+  .category-filter-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .finance-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .finance-matrix-table {
+    min-width: 580px;
+  }
+
+  .pass-body {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .pass-details-grid {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .pass-qr-box {
+    margin: 0 auto;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+

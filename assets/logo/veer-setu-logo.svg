@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Military Shield Border with Classic Palette -->
+  <polygon points="50,4 94,22 94,74 50,96 6,74 6,22" fill="#303C36" stroke="#B9AA98" stroke-width="4"/>
+  <!-- Crossed Swords / Bridge Struts -->
+  <path d="M28,32 L72,68 M72,32 L28,68" stroke="#F1EEE6" stroke-width="4" stroke-linecap="round"/>
+  <!-- Center Sage Green Medallion -->
+  <circle cx="50" cy="50" r="15" fill="#829B8F" stroke="#F1EEE6" stroke-width="2"/>
+  <!-- Ashoka / Valor 5-Point Star in Warm Ivory -->
+  <polygon points="50,41 53,47 59,47 54,51 56,58 50,54 44,58 46,51 41,47 47,47" fill="#F1EEE6"/>
+</svg>
+

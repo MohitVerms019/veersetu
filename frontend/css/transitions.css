@@ -1,0 +1,345 @@
+/* =============================================================
+   VEER SETU — transitions.css
+   Cinematic page-transition overlay system
+   ============================================================= */
+
+/* ── View Transitions API ───────────────────────────────────── */
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes vsOldRoot {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes vsNewRoot {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+::view-transition-old(root) {
+  animation: vsOldRoot 0.3s ease-in both;
+}
+
+::view-transition-new(root) {
+  animation: vsNewRoot 0.4s ease-out both;
+}
+
+/* ── Overlay Base ───────────────────────────────────────────── */
+.vs-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.vs-overlay.active {
+  pointer-events: all;
+}
+
+/* ── ① CURTAIN TRANSITION ───────────────────────────────────── */
+.vs-curtain-left,
+.vs-curtain-right {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    #526B60 0%,
+    #3f5449 50%,
+    #2e4038 100%
+  );
+  transition: transform 0.65s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
+}
+
+.vs-curtain-left  {
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.vs-curtain-right {
+  right: 0;
+  transform: translateX(100%);
+}
+
+/* Closing: curtains slide in to cover screen */
+.vs-overlay.curtain.closing .vs-curtain-left,
+.vs-overlay.curtain.closing .vs-curtain-right {
+  transform: translateX(0);
+}
+
+/* Opening: curtains retract off screen */
+.vs-overlay.curtain.opening .vs-curtain-left {
+  transform: translateX(-100%);
+}
+
+.vs-overlay.curtain.opening .vs-curtain-right {
+  transform: translateX(100%);
+}
+
+/* ── ② SAGE WIPE TRANSITION ─────────────────────────────────── */
+.vs-wipe-layer,
+.vs-wipe-accent {
+  position: absolute;
+  inset: 0;
+  transition: clip-path 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: clip-path;
+}
+
+.vs-wipe-layer {
+  background-color: #829B8F;
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  z-index: 1;
+}
+
+.vs-wipe-accent {
+  background-color: #526B60;
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  z-index: 2;
+  transition-delay: 0.06s;
+}
+
+/* Closing: wipe covers full screen */
+.vs-overlay.wipe.closing .vs-wipe-layer {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.vs-overlay.wipe.closing .vs-wipe-accent {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition-delay: 0.08s;
+}
+
+/* Opening: wipe collapses off-screen to the right */
+.vs-overlay.wipe.opening .vs-wipe-layer {
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  transition-delay: 0.1s;
+}
+
+.vs-overlay.wipe.opening .vs-wipe-accent {
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  transition-delay: 0.04s;
+}
+
+/* ── ③ MILITARY SWEEP TRANSITION ────────────────────────────── */
+.vs-mil-sweep {
+  position: absolute;
+  inset: 0;
+  background-color: #303C36;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  z-index: 1;
+  will-change: opacity;
+}
+
+.vs-overlay.military.closing .vs-mil-sweep {
+  opacity: 1;
+}
+
+.vs-overlay.military.opening .vs-mil-sweep {
+  opacity: 0;
+  transition-delay: 0.5s;
+}
+
+/* Tricolor beam that sweeps across */
+.vs-tricolor-beam {
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  transform: translateY(-50%);
+  width: 240px;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    #FF9933 33.33%,
+    #fff 33.33% 66.66%,
+    #138808 66.66%
+  );
+  border-radius: 2px;
+  z-index: 3;
+  opacity: 0;
+  box-shadow: 0 0 12px rgba(255,255,255,0.4);
+  will-change: left, opacity;
+}
+
+.vs-overlay.military.closing .vs-tricolor-beam {
+  opacity: 1;
+  left: 110%;
+  transition: left 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+              opacity 0.15s ease;
+}
+
+.vs-overlay.military.opening .vs-tricolor-beam {
+  opacity: 0;
+  left: -100%;
+  transition: opacity 0.2s ease;
+}
+
+/* ── CENTER EMBLEM ──────────────────────────────────────────── */
+.vs-emblem-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  text-align: center;
+  will-change: opacity, transform;
+}
+
+.vs-emblem-logo {
+  width: 72px;
+  height: 72px;
+}
+
+.vs-emblem-wordmark {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #F1EEE6;
+}
+
+.vs-emblem-sub {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #B9AA98;
+  opacity: 0.75;
+}
+
+/* Visible only during closing phase */
+.vs-overlay.closing .vs-emblem-center {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition-delay: 0.2s;
+  animation: emblemPulse 2.5s ease-in-out infinite 0.5s;
+}
+
+/* Fade during opening phase */
+.vs-overlay.opening .vs-emblem-center {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition-delay: 0s;
+  animation: none;
+}
+
+@keyframes emblemPulse {
+  0%   { transform: translate(-50%, -50%) scale(1); }
+  50%  { transform: translate(-50%, -50%) scale(1.05); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ── ENTRANCE ANIMATIONS ────────────────────────────────────── */
+@keyframes vsFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vsFadeZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes vsSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes vsSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Base animation class */
+.vs-anim {
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-duration: 0.72s;
+}
+
+/* Named animations */
+.vs-anim.fade-up    { animation-name: vsFadeUp; }
+.vs-anim.zoom-in    { animation-name: vsFadeZoom; }
+.vs-anim.slide-left { animation-name: vsSlideLeft; }
+.vs-anim.slide-right{ animation-name: vsSlideRight; }
+
+/* Delay classes — 0.08s increments */
+.vs-anim.d-1 { animation-delay: 0.08s; }
+.vs-anim.d-2 { animation-delay: 0.16s; }
+.vs-anim.d-3 { animation-delay: 0.24s; }
+.vs-anim.d-4 { animation-delay: 0.32s; }
+.vs-anim.d-5 { animation-delay: 0.40s; }
+.vs-anim.d-6 { animation-delay: 0.48s; }
+
+/* ── REDUCED MOTION ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  /* Disable all view transitions */
+  @view-transition { navigation: none; }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  /* Disable overlay transitions */
+  .vs-curtain-left,
+  .vs-curtain-right,
+  .vs-wipe-layer,
+  .vs-wipe-accent,
+  .vs-mil-sweep,
+  .vs-tricolor-beam,
+  .vs-emblem-center {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* Disable entrance animations */
+  .vs-anim,
+  .vs-anim.fade-up,
+  .vs-anim.zoom-in,
+  .vs-anim.slide-left,
+  .vs-anim.slide-right {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VEER SETU - A Digital Welfare & Support Platform for Indian Army Personnel and Their Families. Access government welfare schemes, scholarships, healthcare, and pensions.">
+  <title>VEER SETU 🇮🇳 | Digital Welfare & Support Platform for Indian Army Personnel</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Rajdhani -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Pro Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core & Page Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/transitions.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="theme-classic">
+
+  <!-- ====================================================
+       1. TOP NOTICE STRIP & QUICK ACTIONS
+       ==================================================== -->
+  <aside class="top-bar" aria-label="Official Notice Bar">
+    <div class="container top-bar-container">
+      <div class="top-bar-left">
+        <span class="tricolor-badge" aria-hidden="true">
+          <span class="bar-saffron"></span>
+          <span class="bar-white"></span>
+          <span class="bar-green"></span>
+        </span>
+        <span class="top-bar-text">
+          <strong>GOVERNMENT OF INDIA • ARMED FORCES WELFARE INITIATIVE</strong> | Kendriya Sainik Board (KSB) & DIAV Integrated
+        </span>
+      </div>
+      <div class="top-bar-right">
+        <a href="tel:1904" class="top-bar-link" title="Emergency Army Welfare Helpline">
+          <i class="fa-solid fa-phone-volume"></i> Helpline: 1904
+        </a>
+        <a href="admin-dashboard.html" class="auth-nav-pill" title="Security Command Center">
+          <i class="fa-solid fa-shield-halved"></i> Security Center
+        </a>
+        <a href="login.html" class="auth-nav-pill">
+          <i class="fa-solid fa-user-check"></i> Personnel Portal
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ====================================================
+       2. UNIFIED NAVIGATION BAR (Forest Grey #526B60)
+       ==================================================== -->
+  <header class="main-nav" id="main-navbar">
+    <div class="container nav-container">
+      
+      <!-- Brand Logo & Motto -->
+      <a href="index.html" class="nav-brand" aria-label="Veer Setu Home" data-transition="curtain">
+        <svg class="brand-emblem-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="50,4 94,22 94,74 50,96 6,74 6,22" fill="#303C36" stroke="#B9AA98" stroke-width="4"/>
+          <path d="M28,32 L72,68 M72,32 L28,68" stroke="#F1EEE6" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="14" fill="#829B8F" stroke="#F1EEE6" stroke-width="2"/>
+          <polygon points="50,42 53,48 59,48 54,52 56,58 50,54 44,58 46,52 41,48 47,48" fill="#F1EEE6"/>
+        </svg>
+        <div class="brand-text">
+          <span class="brand-name">VEER <span class="setu">SETU</span></span>
+          <span class="brand-tagline">DIGITAL WELFARE BRIDGE • वीर सेतु</span>
+        </div>
+      </a>
+
+      <!-- Desktop & Mobile Navigation Menu -->
+      <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link active" data-transition="curtain">Home</a>
+        <a href="about.html" class="nav-link" data-transition="curtain">About Us</a>
+        <a href="schemes.html" class="nav-link" data-transition="reveal">Welfare Schemes</a>
+        <a href="education.html" class="nav-link" data-transition="reveal">Education</a>
+        <a href="healthcare.html" class="nav-link" data-transition="military">Healthcare</a>
+        <a href="financial.html" class="nav-link" data-transition="curtain">Financial Support</a>
+        <a href="family.html" class="nav-link" data-transition="military">Family Support</a>
+        <a href="contact.html" class="nav-link" data-transition="reveal">Contact Us</a>
+      </nav>
+
+      <!-- Nav Action CTAs: Login & Register -->
+      <div class="nav-actions">
+        <a href="login.html" class="btn-nav-login" data-transition="military">
+          <i class="fa-solid fa-lock"></i> Login
+        </a>
+        <a href="register.html" class="btn-nav-register" data-transition="curtain">
+          <i class="fa-solid fa-user-plus"></i> Register
+        </a>
+        <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- ====================================================
+         3. HERO SECTION - SERVING THOSE WHO SERVE OUR NATION
+         ==================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        
+        <!-- Hero Left Column -->
+        <div class="hero-content-col vs-animate-entry vs-entry-fade-up">
+          <span class="hero-pill">
+            <i class="fa-solid fa-medal"></i> Ministry of Defence • Academic Welfare Initiative
+          </span>
+
+          <h1 class="hero-title">
+            Serving Those Who <br>
+            Serve Our Nation.
+          </h1>
+
+          <p class="hero-subtitle">
+            One Digital Bridge. Countless Benefits. Stronger Army Families.
+          </p>
+
+          <p class="hero-body-text">
+            VEER SETU is a centralized digital sanctuary for Indian Army serving personnel, veterans, and military families. Discover verified scholarships, ECHS cashless medical care, AGIF benefits, SPARSH pensions, and martyr welfare support in one unified platform.
+          </p>
+
+          <!-- Primary CTAs -->
+          <div class="hero-actions-row">
+            <a href="schemes.html" class="btn btn-forest btn-lg" data-transition="reveal">
+              <i class="fa-solid fa-compass"></i> Explore Benefits
+            </a>
+            <a href="about.html" class="btn btn-outline-forest btn-lg" data-transition="curtain">
+              <i class="fa-solid fa-landmark"></i> Learn More About Us
+            </a>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="hero-trust-row">
+            <div class="trust-item">
+              <i class="fa-solid fa-shield-halved text-forest"></i>
+              <span>Official KSB & ECHS Portals</span>
+            </div>
+            <div class="trust-item">
+              <i class="fa-solid fa-fingerprint text-forest"></i>
+              <span>Role-Based Secure Access</span>
+            </div>
+            <div class="trust-item">
+              <i class="fa-solid fa-award text-forest"></i>
+              <span>Honoring Veer Naris</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Column: Motivational Shield Card -->
+        <div class="hero-visual-col vs-animate-entry vs-entry-zoom vs-delay-2">
+          <div class="hero-card-featured">
+            
+            <div class="featured-card-header">
+              <div class="card-crest">
+                <svg viewBox="0 0 100 100" width="46" height="46">
+                  <polygon points="50,4 94,22 94,74 50,96 6,74 6,22" fill="#526B60" stroke="#B9AA98" stroke-width="4"/>
+                  <circle cx="50" cy="50" r="16" fill="#829B8F"/>
+                  <polygon points="50,38 53,44 59,44 54,48 56,54 50,51 44,54 46,48 41,44 47,44" fill="#F1EEE6"/>
+                </svg>
+              </div>
+              <div class="crest-details">
+                <span class="card-kicker">INDIAN ARMY DIGITAL SANCTUARY</span>
+                <h3 class="card-lead">"सेवा अस्माकं धर्मः"</h3>
+                <span class="card-sub">Service is Our Duty • Service Before Self</span>
+              </div>
+            </div>
+
+            <p class="featured-quote">
+              "The soldier above all others prays for peace, for it is the soldier who must suffer and bear the deepest wounds of war. Veer Setu stands as a perpetual bridge of gratitude from a thankful nation."
+            </p>
+
+            <div class="featured-quick-links">
+              <a href="education.html" class="quick-pill" data-transition="reveal">
+                <i class="fa-solid fa-graduation-cap"></i> PMSS Scholarship
+              </a>
+              <a href="healthcare.html" class="quick-pill" data-transition="military">
+                <i class="fa-solid fa-heart-pulse"></i> ECHS Healthcare
+              </a>
+              <a href="financial.html" class="quick-pill" data-transition="curtain">
+                <i class="fa-solid fa-hand-holding-dollar"></i> AGIF & Pension
+              </a>
+              <a href="family.html" class="quick-pill" data-transition="military">
+                <i class="fa-solid fa-people-roof"></i> Veer Nari Care
+              </a>
+            </div>
+
+            <div class="featured-footer">
+              <a href="schemes.html" class="btn btn-sm btn-forest" data-transition="reveal">
+                View All Welfare Programs <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================
+         4. KEY STATISTICS STRIP
+         ==================================================== -->
+    <section class="stats-strip" id="stats-strip" aria-label="Key Platform Metrics">
+      <div class="container">
+        <div class="stats-grid">
+          
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fa-solid fa-building-columns"></i></div>
+            <div class="stat-data">
+              <span class="stat-counter-number" data-target="12" data-suffix="+">12+</span>
+              <span class="stat-label">Verified Welfare Schemes</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fa-solid fa-shield-check"></i></div>
+            <div class="stat-data">
+              <span class="stat-counter-number" data-target="100" data-suffix="%">100%</span>
+              <span class="stat-label">Direct Official Ministry Links</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+            <div class="stat-data">
+              <span class="stat-counter-number" data-target="1" data-suffix=" Cr">₹1 Cr</span>
+              <span class="stat-label">Maximum Insurance Coverage</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <div class="stat-data">
+              <span class="stat-counter-number" data-target="24" data-suffix="h">24h</span>
+              <span class="stat-label">Support Ticket Response SLA</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         5. CORE SERVICES OVERVIEW - DEDICATED SECTIONS
+         ==================================================== -->
+    <section class="services-overview-section">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-solid fa-layer-group"></i> Central Welfare Pillars</span>
+          <h2 class="section-title">Explore Dedicated Welfare Domains</h2>
+          <p class="section-desc">
+            Each branch of support features specialized workflows, eligibility calculators, and authentic MoD portal linkages.
+          </p>
+        </div>
+
+        <div class="overview-cards-grid">
+          
+          <!-- Card 1: Education -->
+          <article class="service-card vs-animate-entry vs-entry-fade-up vs-delay-1">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h3 class="service-title">Education & Scholarships</h3>
+            <p class="service-desc">
+              Prime Minister's Scholarship Scheme (PMSS) offering up to ₹36,000 annually, higher technical education grants, and concessions for wards of battle casualties.
+            </p>
+            <a href="education.html" class="service-link" data-transition="reveal">
+              Open Education Portal <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <!-- Card 2: Healthcare -->
+          <article class="service-card vs-animate-entry vs-entry-fade-up vs-delay-2">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+            <h3 class="service-title">Healthcare & ECHS</h3>
+            <p class="service-desc">
+              Cashless comprehensive medical cover through the 64-KB ECHS Smart Card, military polyclinics, and nationwide empanelled private super-specialty hospitals.
+            </p>
+            <a href="healthcare.html" class="service-link" data-transition="military">
+              Open Healthcare Portal <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <!-- Card 3: Financial Support -->
+          <article class="service-card vs-animate-entry vs-entry-fade-up vs-delay-3">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-hand-holding-dollar"></i>
+            </div>
+            <h3 class="service-title">Financial Support & AGIF</h3>
+            <p class="service-desc">
+              Life cover up to ₹1 Crore, disability compensation packages, Daughter's Marriage grants (₹50,000), and SPARSH digital pension management.
+            </p>
+            <a href="financial.html" class="service-link" data-transition="curtain">
+              Open Financial Portal <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <!-- Card 4: Family Support -->
+          <article class="service-card vs-animate-entry vs-entry-fade-up vs-delay-4">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-people-roof"></i>
+            </div>
+            <h3 class="service-title">Family & Veer Nari Care</h3>
+            <p class="service-desc">
+              Dedicated Directorate of Indian Army Veterans (DIAV) workflows, war widow rehabilitation, hostel grants, and legal grievance assistance.
+            </p>
+            <a href="family.html" class="service-link" data-transition="military">
+              Open Family Support Portal <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================
+         6. DIGITAL WELFARE PASS GENERATOR PREVIEW
+         ==================================================== -->
+    <section class="verification-section" id="verify-preview">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-solid fa-id-card-clip"></i> Digital Identity Verification</span>
+          <h2 class="section-title">Synthesize Your Veer Setu Welfare Pass</h2>
+          <p class="section-desc">
+            Generate an academic verifiable digital pass with military arm, regiment, service number, and qualified welfare entitlements.
+          </p>
+        </div>
+
+        <div class="verification-card-box">
+          <div class="verification-intro-flex">
+            <div class="intro-left">
+              <h3>Fast, Secure Eligibility Synthesizer</h3>
+              <p>
+                Our demonstration engine validates service credentials against simulated Army registers to synthesize an instant, printable Digital Welfare Pass with an embedded security QR code.
+              </p>
+              <ul class="checklist-items">
+                <li><i class="fa-solid fa-check text-green"></i> 100% Client-Side Privacy — No Sensitive PII Logged</li>
+                <li><i class="fa-solid fa-check text-green"></i> Pre-Qualifies Entitlements for PMSS, ECHS, AGIF & SPARSH</li>
+                <li><i class="fa-solid fa-check text-green"></i> Printable Welfare ID Card Format</li>
+              </ul>
+              <div class="mt-4">
+                <a href="schemes.html#verify-pass" class="btn btn-forest" data-transition="reveal">
+                  <i class="fa-solid fa-shield-halved"></i> Launch Pass Synthesizer
+                </a>
+              </div>
+            </div>
+            <div class="intro-right">
+              <div class="mini-pass-preview">
+                <div class="mini-header">
+                  <span>VEER SETU DIGITAL PASS</span>
+                  <span class="badge-verified"><i class="fa-solid fa-check"></i> VERIFIED</span>
+                </div>
+                <div class="mini-body">
+                  <strong>SUBEDAR RAJESH SINGH</strong>
+                  <p class="text-saffron">JC-482910M • 14 RAJPUTANA RIFLES</p>
+                  <p class="text-muted">Serving Personnel • Eligible for 8 Schemes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================
+       7. GLOBAL FOOTER (Deep Charcoal Green #303C36)
+       ==================================================== -->
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      
+      <!-- Footer Col 1: About Platform -->
+      <div class="footer-col footer-brand-col">
+        <div class="footer-brand">
+          <svg viewBox="0 0 100 100" width="38" height="38" fill="none">
+            <polygon points="50,4 94,22 94,74 50,96 6,74 6,22" fill="#526B60" stroke="#B9AA98" stroke-width="4"/>
+            <path d="M28,32 L72,68 M72,32 L28,68" stroke="#F1EEE6" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="50" cy="50" r="14" fill="#829B8F" stroke="#F1EEE6" stroke-width="2"/>
+            <polygon points="50,42 53,48 59,48 54,52 56,58 50,54 44,58 46,52 41,48 47,48" fill="#F1EEE6"/>
+          </svg>
+          <span class="footer-brand-title">VEER <span class="setu">SETU</span></span>
+        </div>
+        <p class="footer-motto-sanskrit">"सेवा अस्माकं धर्मः" — Service Before Self</p>
+        <p class="footer-desc">
+          A dedicated digital sanctuary connecting Indian Army soldiers, veterans, and military families with legitimate government welfare schemes, scholarships, and healthcare entitlements.
+        </p>
+        <div class="footer-tricolor-accent">
+          <span class="accent-saffron"></span>
+          <span class="accent-white"></span>
+          <span class="accent-green"></span>
+        </div>
+      </div>
+
+      <!-- Footer Col 2: Navigation Links -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Platform Pages</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" data-transition="curtain">Home</a></li>
+          <li><a href="about.html" data-transition="curtain">About Us</a></li>
+          <li><a href="schemes.html" data-transition="reveal">Welfare Schemes</a></li>
+          <li><a href="education.html" data-transition="reveal">Education & Scholarships</a></li>
+          <li><a href="healthcare.html" data-transition="military">Healthcare & ECHS</a></li>
+          <li><a href="financial.html" data-transition="curtain">Financial Support</a></li>
+          <li><a href="family.html" data-transition="military">Family & Veer Nari</a></li>
+          <li><a href="contact.html" data-transition="reveal">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Footer Col 3: Official Portals -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Official Portals</h4>
+        <ul class="footer-links">
+          <li><a href="https://ksb.gov.in" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Kendriya Sainik Board (KSB)</a></li>
+          <li><a href="https://echs.gov.in" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ECHS Healthcare Organisation</a></li>
+          <li><a href="https://sparsh.defencepension.gov.in" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> SPARSH Pension Portal</a></li>
+          <li><a href="https://indianarmy.nic.in" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Indian Army Official</a></li>
+          <li><a href="https://mod.gov.in" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ministry of Defence</a></li>
+        </ul>
+      </div>
+
+      <!-- Footer Col 4: Liaison Support -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Welfare Helpdesk</h4>
+        <ul class="footer-contact-list">
+          <li><i class="fa-solid fa-location-dot"></i> Integrated HQ, Ministry of Defence, South Block, New Delhi - 110011</li>
+          <li><i class="fa-solid fa-phone"></i> Emergency Army Helpline: 1904</li>
+          <li><i class="fa-solid fa-envelope"></i> liaison@veersetu.gov.in.demo</li>
+          <li><i class="fa-solid fa-clock"></i> 24x7 Emergency / Mon-Fri 0900-1730 Desk</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="container footer-bottom-bar">
+      <p class="footer-copyright">
+        © 2026 VEER SETU. Developed for the Welfare of Armed Forces Personnel and Military Families.
+      </p>
+      <p class="footer-disclaimer-note">
+        <i class="fa-solid fa-shield-halved"></i> Demonstration & Academic Prototype. Does not represent an official Ministry of Defence server.
+      </p>
+    </div>
+  </footer>
+
+  <!-- JavaScript Modules -->
+  <script src="js/navigation.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

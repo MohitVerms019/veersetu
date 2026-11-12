@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Security Command Center | VEER SETU 🇮🇳</title>
+
+  <!-- Meta Description -->
+  <meta name="description" content="Veer Setu - Authorized Administrator Security & Verification Command Dashboard.">
+  <meta name="theme-color" content="#526B60">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,6 92,24 92,74 50,94 8,74 8,24' fill='%23303C36' stroke='%23B9AA98' stroke-width='5'/><circle cx='50' cy='50' r='18' fill='%23526B60'/><path d='M42,50 L48,56 L60,42' stroke='%23F1EEE6' stroke-width='4' fill='none'/></svg>">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+
+  <!-- Classic Theme Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Admin Dashboard Specific Additions */
+    .admin-wrapper {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .admin-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      background: var(--warm-ivory);
+      border: 1px solid var(--warm-beige);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 2rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .admin-title-group h1 {
+      font-family: var(--font-serif);
+      font-size: 2.1rem;
+      color: var(--deep-charcoal);
+      margin-bottom: 0.2rem;
+    }
+
+    .admin-title-group p {
+      color: var(--forest-grey);
+      font-size: 0.9rem;
+    }
+
+    .admin-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--soft-sand);
+      border: 1px solid var(--warm-beige);
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--deep-charcoal);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .pulse-secure {
+      width: 10px;
+      height: 10px;
+      background-color: var(--success-tone);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--success-tone);
+      animation: pulseAnim 2s infinite;
+    }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .kpi-card {
+      background: var(--warm-ivory);
+      border: 1px solid var(--warm-beige);
+      border-radius: var(--radius-md);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-subtle);
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      transition: transform var(--transition-fast);
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .kpi-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-sm);
+      background: var(--soft-sand);
+      border: 1px solid var(--warm-beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--forest-grey);
+      flex-shrink: 0;
+    }
+
+    .kpi-data {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .kpi-value {
+      font-family: var(--font-military);
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--deep-charcoal);
+      line-height: 1;
+    }
+
+    .kpi-label {
+      font-size: 0.82rem;
+      color: var(--forest-grey);
+      font-weight: 600;
+      margin-top: 0.25rem;
+    }
+
+    .kpi-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-pill);
+      display: inline-block;
+      margin-top: 0.25rem;
+    }
+
+    .tag-pending { background: #E6D2CF; color: var(--error-tone); }
+    .tag-approved { background: #D2E4D9; color: var(--success-tone); }
+    .tag-alert { background: #F2D5C2; color: #9A522A; }
+
+    /* Main Dashboard Content Layout */
+    .admin-main-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .admin-panel {
+      background: var(--warm-ivory);
+      border: 1px solid var(--warm-beige);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--warm-beige);
+    }
+
+    .panel-title {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--deep-charcoal);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Verification Requests Table */
+    .admin-table-wrap {
+      overflow-x: auto;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+
+    .admin-table th {
+      background: var(--soft-sand);
+      color: var(--deep-charcoal);
+      padding: 0.75rem 0.9rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--warm-beige);
+    }
+
+    .admin-table td {
+      padding: 0.85rem 0.9rem;
+      border-bottom: 1px solid rgba(185, 170, 152, 0.4);
+      color: var(--deep-charcoal);
+      vertical-align: middle;
+    }
+
+    .admin-table tr:hover {
+      background: rgba(213, 201, 186, 0.25);
+    }
+
+    .status-badge-inline {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-pill);
+      display: inline-block;
+      text-transform: uppercase;
+    }
+
+    .badge-p { background: #F3E5D8; color: #8C532E; border: 1px solid #D5C9BA; }
+    .badge-a { background: #D5E5DB; color: #2B5738; border: 1px solid #94ACA1; }
+    .badge-r { background: #F0D5D3; color: #8F342C; border: 1px solid #C4A4A1; }
+
+    .action-btn-group {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .btn-action {
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: var(--transition-fast);
+    }
+
+    .btn-approve { background: var(--forest-grey); color: var(--warm-ivory); }
+    .btn-approve:hover { background: var(--deep-charcoal); }
+
+    .btn-reject { background: #A34E45; color: var(--warm-ivory); }
+    .btn-reject:hover { background: #7A332B; }
+
+    .btn-view { background: var(--soft-sand); color: var(--deep-charcoal); border: 1px solid var(--warm-beige); }
+    .btn-view:hover { background: var(--warm-beige); }
+
+    /* Security Logs Feed */
+    .audit-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      max-height: 480px;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+
+    .audit-entry {
+      background: var(--soft-sand);
+      border: 1px solid var(--warm-beige);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      font-size: 0.82rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .audit-entry-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .audit-event-type {
+      font-weight: 700;
+      color: var(--deep-charcoal);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .audit-time {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .audit-details {
+      color: var(--forest-grey);
+      font-size: 0.78rem;
+    }
+
+    .audit-meta-ip {
+      font-family: monospace;
+      font-size: 0.72rem;
+      color: var(--deep-charcoal);
+      background: rgba(241, 238, 230, 0.6);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      display: inline-block;
+      margin-top: 0.2rem;
+    }
+
+    /* Full Width RBAC Grid */
+    .rbac-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .rbac-role-card {
+      background: var(--soft-sand);
+      border: 1px solid var(--warm-beige);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+    }
+
+    .role-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-military);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--deep-charcoal);
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid var(--warm-beige);
+      padding-bottom: 0.4rem;
+    }
+
+    .role-perm-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--deep-charcoal);
+    }
+
+    .role-perm-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+
+    .role-perm-list i {
+      color: var(--forest-grey);
+      margin-top: 0.2rem;
+    }
+
+    @media (max-width: 992px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .admin-main-grid { grid-template-columns: 1fr; }
+      .rbac-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 580px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .rbac-grid { grid-template-columns: 1fr; }
+      .admin-header-row { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="classic-top-nav">
+    <div class="nav-brand-inline">
+      <svg class="nav-logo-svg" viewBox="0 0 100 100" fill="none">
+        <polygon points="50,4 94,22 94,74 50,96 6,74 6,22" fill="#303C36" stroke="#B9AA98" stroke-width="4"/>
+        <path d="M28,32 L72,68 M72,32 L28,68" stroke="#F1EEE6" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="50" cy="50" r="14" fill="#829B8F" stroke="#F1EEE6" stroke-width="2"/>
+        <polygon points="50,42 53,48 59,48 54,52 56,58 50,54 44,58 46,52 41,48 47,48" fill="#F1EEE6"/>
+      </svg>
+      <div class="nav-brand-text">
+        <span class="nav-title">VEER <span class="highlight">SETU</span></span>
+        <span class="nav-subtitle-tag">Admin Security Console • रक्षा नियंत्रण</span>
+      </div>
+    </div>
+
+    <div class="nav-actions-right">
+      <span class="defense-emblem-badge"><i class="fa-solid fa-lock"></i> RBAC LEVEL: ADMINISTRATOR</span>
+      <a href="index.html" class="btn-nav-return"><i class="fa-solid fa-house"></i> Public Portal</a>
+      <a href="login.html" class="btn-nav-return"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+  </header>
+
+  <!-- Main Security Dashboard Canvas (Sage Green #829B8F) -->
+  <div class="classic-page-wrapper" style="padding-top: 1.5rem; align-items: flex-start;">
+    <div class="admin-wrapper" style="width: 100%;">
+      
+      <!-- Admin Header Banner -->
+      <div class="admin-header-row">
+        <div class="admin-title-group">
+          <h1>Security Operations & Identity Verification Center</h1>
+          <p>Real-time audit telemetry, military credential review queue, and access control governance.</p>
+        </div>
+        <div class="admin-status-badge">
+          <span class="pulse-secure"></span>
+          <span>Defense System Status: Protected</span>
+        </div>
+      </div>
+
+      <!-- KPI Metrics Strip -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-icon"><i class="fa-solid fa-users"></i></div>
+          <div class="kpi-data">
+            <span class="kpi-value" id="kpi-users">1,428</span>
+            <span class="kpi-label">Total Registered Accounts</span>
+            <span class="kpi-tag tag-approved"><i class="fa-solid fa-check"></i> 100% RBAC Enforced</span>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+          <div class="kpi-data">
+            <span class="kpi-value" id="kpi-pending">14</span>
+            <span class="kpi-label">Pending Verification Proofs</span>
+            <span class="kpi-tag tag-pending"><i class="fa-solid fa-clock"></i> Requires Admin Review</span>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-icon"><i class="fa-solid fa-shield-check"></i></div>
+          <div class="kpi-data">
+            <span class="kpi-value" id="kpi-verified">1,385</span>
+            <span class="kpi-label">Approved Defense Profiles</span>
+            <span class="kpi-tag tag-approved"><i class="fa-solid fa-circle-check"></i> Cryptographic Pass Active</span>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="kpi-data">
+            <span class="kpi-value" id="kpi-suspicious">3</span>
+            <span class="kpi-label">Locked Suspicious Attempts</span>
+            <span class="kpi-tag tag-alert"><i class="fa-solid fa-ban"></i> Rate-Limited / Lockout</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Columns: Verification Queue (Left) & Live Security Audit Feed (Right) -->
+      <div class="admin-main-grid">
+        
+        <!-- Left: Verification Queue -->
+        <div class="admin-panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <i class="fa-solid fa-id-card-clip text-forest"></i>
+              <span>Military Credential Review Queue</span>
+            </div>
+            <button class="btn-action btn-view" onclick="refreshQueue()"><i class="fa-solid fa-arrows-rotate"></i> Refresh</button>
+          </div>
+
+          <div class="admin-table-wrap">
+            <table class="admin-table" id="verification-table">
+              <thead>
+                <tr>
+                  <th>Request ID</th>
+                  <th>Personnel Name</th>
+                  <th>Service Number</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="queue-body">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Right: Security Monitoring & Audit Logs -->
+        <div class="admin-panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <i class="fa-solid fa-terminal text-forest"></i>
+              <span>Security Event Stream</span>
+            </div>
+            <span class="kpi-tag tag-approved">Live Audit Active</span>
+          </div>
+
+          <div class="audit-feed" id="audit-feed-container">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Full Width: Role-Based Access Control (RBAC) Governance -->
+      <div class="admin-panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <i class="fa-solid fa-user-shield text-forest"></i>
+            <span>Role-Based Access Control (RBAC) Governance Matrix</span>
+          </div>
+          <span style="font-size: 0.8rem; color: var(--forest-grey);">OWASP Privilege Separation Compliant</span>
+        </div>
+
+        <div class="rbac-grid">
+          <div class="rbac-role-card">
+            <div class="role-header">
+              <i class="fa-solid fa-person-military-pointing"></i>
+              <span>Serving Soldier</span>
+            </div>
+            <ul class="role-perm-list">
+              <li><i class="fa-solid fa-check"></i> View In-Service Welfare Schemes</li>
+              <li><i class="fa-solid fa-check"></i> Access Children Education Allowance</li>
+              <li><i class="fa-solid fa-check"></i> Request CSD AFD-I Quotations</li>
+              <li><i class="fa-solid fa-xmark" style="color: var(--error-tone);"></i> Cannot access PCDA Pension tools</li>
+              <li><i class="fa-solid fa-xmark" style="color: var(--error-tone);"></i> Cannot view other soldier files</li>
+            </ul>
+          </div>
+
+          <div class="rbac-role-card">
+            <div class="role-header">
+              <i class="fa-solid fa-medal"></i>
+              <span>Ex-Serviceman (ESM)</span>
+            </div>
+            <ul class="role-perm-list">
+              <li><i class="fa-solid fa-check"></i> Access SPARSH Pension Tracker</li>
+              <li><i class="fa-solid fa-check"></i> Apply for PMSS Scholarships</li>
+              <li><i class="fa-solid fa-check"></i> ECHS 64-KB Card Management</li>
+              <li><i class="fa-solid fa-check"></i> Download Verified Welfare Pass</li>
+              <li><i class="fa-solid fa-xmark" style="color: var(--error-tone);"></i> No administrative privileges</li>
+            </ul>
+          </div>
+
+          <div class="rbac-role-card">
+            <div class="role-header">
+              <i class="fa-solid fa-people-roof"></i>
+              <span>Veer Nari / Dependent</span>
+            </div>
+            <ul class="role-perm-list">
+              <li><i class="fa-solid fa-check"></i> DIAV Veer Nari Cell Priority Support</li>
+              <li><i class="fa-solid fa-check"></i> Family Pension & Ex-Gratia Grant</li>
+              <li><i class="fa-solid fa-check"></i> Dependent Higher Education Quotas</li>
+              <li><i class="fa-solid fa-check"></i> Special Cashless ECHS Care</li>
+              <li><i class="fa-solid fa-xmark" style="color: var(--error-tone);"></i> Locked from serving personnel files</li>
+            </ul>
+          </div>
+
+          <div class="rbac-role-card">
+            <div class="role-header">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>Welfare Administrator</span>
+            </div>
+            <ul class="role-perm-list">
+              <li><i class="fa-solid fa-check"></i> Adjudicate Military Document Proofs</li>
+              <li><i class="fa-solid fa-check"></i> Unlock Brute-Force Locked Accounts</li>
+              <li><i class="fa-solid fa-check"></i> Audit Telemetry & Incident Logs</li>
+              <li><i class="fa-solid fa-check"></i> Mandatory MFA (TOTP) Re-auth</li>
+              <li><i class="fa-solid fa-shield"></i> PII & Passwords Redacted in Logs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Document Inspection Modal -->
+  <div class="classic-modal-overlay" id="doc-inspect-modal" role="dialog" aria-modal="true">
+    <div class="classic-modal-box" style="max-width: 600px;">
+      <button class="modal-close-btn" onclick="closeInspectModal()"><i class="fa-solid fa-xmark"></i></button>
+      <h3 class="modal-title-serif" id="inspect-title">Document Credential Proof</h3>
+      <p class="modal-sub-prose" id="inspect-sub">Simulated Defense Document Sandbox View</p>
+
+      <div style="background: var(--soft-sand); border: 1px dashed var(--warm-beige); border-radius: var(--radius-sm); padding: 1.5rem; text-align: center; margin-bottom: 1.5rem;">
+        <i class="fa-solid fa-file-shield text-forest" style="font-size: 3rem; margin-bottom: 0.5rem;"></i>
+        <div style="font-weight: 700; color: var(--deep-charcoal);" id="inspect-filename">discharge_certificate_jc284910.pdf</div>
+        <div style="font-size: 0.75rem; color: var(--forest-grey);">MIME: application/pdf • Magic Bytes: %PDF-1.7 Verified • Virus Scan: Clean</div>
+        <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.5rem; font-family: monospace;">SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</div>
+      </div>
+
+      <div style="display: flex; gap: 0.8rem; justify-content: flex-end;">
+        <button class="btn-action btn-reject" onclick="adjudicateCurrent('REJECTED')"><i class="fa-solid fa-ban"></i> Reject Request</button>
+        <button class="btn-action btn-approve" onclick="adjudicateCurrent('APPROVED')"><i class="fa-solid fa-circle-check"></i> Approve & Issue Pass</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="classic-toast-container"></div>
+
+  <script>
+    // Live In-Memory Review Queue
+    let verificationQueue = [
+      { id: "REQ-7841", name: "Subedar Major R.K. Yadav", armyNo: "JC-384910P", cat: "Retired Personnel", status: "PENDING", file: "discharge_book_verified.pdf" },
+      { id: "REQ-7842", name: "Havildar Gurpreet Singh", armyNo: "15284910M", cat: "Serving Personnel", status: "PENDING", file: "serving_bonafide_signals.pdf" },
+      { id: "REQ-7843", name: "Mrs. Meena Devi (Veer Nari)", armyNo: "14829104A (Late Subedar)", cat: "Family Member", status: "APPROVED", file: "battle_casualty_cert.pdf" },
+      { id: "REQ-7844", name: "Captain (Retd) Arvind Nair", armyNo: "IC-482910M", cat: "Retired Personnel", status: "PENDING", file: "pension_ppo_pcda.pdf" },
+      { id: "REQ-7845", name: "Naik Suresh B.", armyNo: "15482910K", cat: "Serving Personnel", status: "REJECTED", file: "invalid_id_scan.png" }
+    ];
+
+    // Live Audit Stream
+    let auditEvents = [
+      { type: "LOGIN_SUCCESS", user: "admin@veersetu.nic.in", role: "ADMINISTRATOR", ip: "192.168.1.10 (Internal)", time: "Just now", details: "MFA TOTP Token Validated" },
+      { type: "BRUTE_FORCE_BLOCKED", user: "unknown_target@gov.in", role: "ANONYMOUS", ip: "45.132.89.21 (Flagged)", time: "3 mins ago", details: "5 failed attempts. Account locked for 30 minutes." },
+      { type: "VERIFICATION_PROOFS_UPLOADED", user: "gurpreet.singh@army.in", role: "SERVING", ip: "10.4.88.12", time: "8 mins ago", details: "File serving_bonafide_signals.pdf stored in private enclave." },
+      { type: "PASS_GENERATED", user: "meena.devi@nok.in", role: "VEERNARI", ip: "103.22.45.18", time: "25 mins ago", details: "Digital Welfare Pass VS-83921 issued." },
+      { type: "SESSION_EXPIRED", user: "rajesh.sharma@veteran.in", role: "RETIRED", ip: "114.12.98.50", time: "42 mins ago", details: "Automatic 15-minute inactivity termination." }
+    ];
+
+    let currentInspectIndex = null;
+
+    function renderQueue() {
+      const tbody = document.getElementById("queue-body");
+      tbody.innerHTML = verificationQueue.map((item, index) => {
+        let statusBadge = "";
+        if (item.status === "PENDING") statusBadge = `<span class="status-badge-inline badge-p">Pending Review</span>`;
+        if (item.status === "APPROVED") statusBadge = `<span class="status-badge-inline badge-a">Approved</span>`;
+        if (item.status === "REJECTED") statusBadge = `<span class="status-badge-inline badge-r">Rejected</span>`;
+
+        return `
+          <tr>
+            <td><strong>${item.id}</strong></td>
+            <td>${item.name}</td>
+            <td><code>${item.armyNo}</code></td>
+            <td>${item.cat}</td>
+            <td>${statusBadge}</td>
+            <td>
+              <div class="action-btn-group">
+                <button class="btn-action btn-view" onclick="inspectDoc(${index})" title="Inspect Document Proof"><i class="fa-solid fa-eye"></i> View</button>
+                ${item.status === 'PENDING' ? `
+                  <button class="btn-action btn-approve" onclick="quickAdjudicate(${index}, 'APPROVED')" title="Approve"><i class="fa-solid fa-check"></i></button>
+                  <button class="btn-action btn-reject" onclick="quickAdjudicate(${index}, 'REJECTED')" title="Reject"><i class="fa-solid fa-xmark"></i></button>
+                ` : ''}
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join("");
+
+      // Update KPI counters
+      const pendingCount = verificationQueue.filter(x => x.status === "PENDING").length;
+      const approvedCount = 1385 + verificationQueue.filter(x => x.status === "APPROVED").length;
+      document.getElementById("kpi-pending").textContent = pendingCount;
+      document.getElementById("kpi-verified").textContent = approvedCount.toLocaleString();
+    }
+
+    function renderAuditLogs() {
+      const container = document.getElementById("audit-feed-container");
+      container.innerHTML = auditEvents.map(ev => `
+        <div class="audit-entry">
+          <div class="audit-entry-top">
+            <span class="audit-event-type"><i class="fa-solid fa-shield"></i> ${ev.type}</span>
+            <span class="audit-time">${ev.time}</span>
+          </div>
+          <div class="audit-details">${ev.details} • User: <em>${ev.user}</em> (${ev.role})</div>
+          <div><span class="audit-meta-ip">IP: ${ev.ip}</span></div>
+        </div>
+      `).join("");
+    }
+
+    function inspectDoc(index) {
+      currentInspectIndex = index;
+      const item = verificationQueue[index];
+      document.getElementById("inspect-title").textContent = `Review Proof: ${item.id}`;
+      document.getElementById("inspect-sub").textContent = `${item.name} (${item.armyNo}) • ${item.cat}`;
+      document.getElementById("inspect-filename").textContent = item.file;
+      document.getElementById("doc-inspect-modal").classList.add("active");
+    }
+
+    function closeInspectModal() {
+      document.getElementById("doc-inspect-modal").classList.remove("active");
+    }
+
+    function adjudicateCurrent(newStatus) {
+      if (currentInspectIndex !== null) {
+        quickAdjudicate(currentInspectIndex, newStatus);
+        closeInspectModal();
+      }
+    }
+
+    function quickAdjudicate(index, newStatus) {
+      const item = verificationQueue[index];
+      item.status = newStatus;
+      renderQueue();
+
+      // Log event into security telemetry
+      auditEvents.unshift({
+        type: `VERIFICATION_${newStatus}`,
+        user: "admin@veersetu.nic.in",
+        role: "ADMINISTRATOR",
+        ip: "192.168.1.10",
+        time: "Just now",
+        details: `Personnel ${item.name} (${item.armyNo}) marked as ${newStatus}. Pass state updated.`
+      });
+      renderAuditLogs();
+
+      showClassicToast(`Request ${item.id} (${item.name}) updated to ${newStatus}!`, "success");
+    }
+
+    function refreshQueue() {
+      renderQueue();
+      renderAuditLogs();
+      showClassicToast("Review queue and audit telemetry synchronized.", "info");
+    }
+
+    function showClassicToast(msg, type = "info") {
+      let container = document.getElementById("classic-toast-container");
+      const toast = document.createElement("div");
+      toast.className = `classic-toast-pill toast-${type}`;
+      toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>${msg}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.classList.add("fade-out");
+        setTimeout(() => toast.remove(), 350);
+      }, 3500);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderQueue();
+      renderAuditLogs();
+    });
+  </script>
+</body>
+</html>
+
